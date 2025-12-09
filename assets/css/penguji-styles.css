@@ -1,0 +1,289 @@
+/**
+ * File: assets/css/penguji-styles.css
+ * Role: Tambahan styling khusus PENGUJI di atas admin-styles.css
+ * Basis tampilan diambil dari admin-styles.css (body, hero, card, table, dll)
+ */
+
+@import url('admin-styles.css'); 
+/* 
+   Catatan:
+   - Kalau di header.php sudah INCLUDE admin-styles.css lagi, ini boleh dihapus.
+   - Kalau belum, biarkan @import ini supaya penguji ikut semua tampilan admin.
+*/
+
+/* ==================== VARIABEL TAMBAHAN (OPSIONAL) ==================== */
+:root {
+    /* Dipakai untuk beberapa gradient khusus (quick action, dsb) */
+    --gradient-primary: linear-gradient(135deg, #5495FF 0%, #3D7FE8 100%);
+}
+
+
+/* ==================== HERO BADGE (ROLE DI HERO DASHBOARD) ==================== */
+.role-badge-hero {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 0.85rem;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+    color: #FFFFFF;
+}
+
+/* ==================== KARTU STATISTIK DI ROW PERTAMA ==================== */
+/* Dipakai di: Menunggu Penilaian, Sudah Dinilai, Revisi Diajukan, Total Ujian */
+
+.card-stat {
+    background: #FFFFFF;
+    border: 0.308621px solid var(--border-color);
+    border-radius: 10px;
+    padding: 24px 20px;
+    text-align: center;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-stat:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Angka besar (nilai statistik) */
+.stat-number {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 48px;
+    color: var(--dark-text);
+    margin: 0 0 4px 0;
+}
+
+/* Label di bawah angka */
+.stat-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--muted-text);
+    margin: 0 0 8px 0;
+}
+
+/* Link kecil "Lihat Detail →" */
+.stat-link {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.stat-link:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+/* Varian warna full (pakai class bg-xxx di card-stat) */
+.card-stat.bg-info {
+    background: linear-gradient(135deg, rgba(13, 202, 240, 0.9) 0%, rgba(13, 202, 240, 1) 100%);
+    color: #FFFFFF !important;
+    border: none;
+}
+
+.card-stat.bg-success {
+    background: linear-gradient(135deg, rgba(25, 135, 84, 0.9) 0%, rgba(25, 135, 84, 1) 100%);
+    color: #FFFFFF !important;
+    border: none;
+}
+
+.card-stat.bg-warning {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.9) 0%, rgba(255, 193, 7, 1) 100%);
+    color: #FFFFFF !important;
+    border: none;
+}
+
+.card-stat.bg-primary {
+    background: linear-gradient(135deg, rgba(13, 110, 253, 0.9) 0%, rgba(13, 110, 253, 1) 100%);
+    color: #FFFFFF !important;
+    border: none;
+}
+
+/* Biar stat-number & stat-label ikut putih di card berwarna */
+.card-stat.bg-info .stat-number,
+.card-stat.bg-success .stat-number,
+.card-stat.bg-warning .stat-number,
+.card-stat.bg-primary .stat-number {
+    color: #FFFFFF !important;
+}
+
+.card-stat.bg-info .stat-label,
+.card-stat.bg-success .stat-label,
+.card-stat.bg-warning .stat-label,
+.card-stat.bg-primary .stat-label {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ==================== QUICK ACTION BUTTONS (TOMBOL DI BAWAH STAT) ==================== */
+/* Dipakai di: "Lihat Semua Ujian", "Beri Penilaian", "Review Revisi" */
+
+.quick-action-btn {
+    background: #FFFFFF;
+    border: 0.308621px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px 15px;
+    text-align: center;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+    color: var(--dark-text);
+}
+
+.quick-action-btn:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+/* Varian warna quick-action (kombinasi dengan .btn-*) */
+.quick-action-btn.btn-primary {
+    background: linear-gradient(135deg, #5495FF 0%, #3D7FE8 100%);
+    color: #FFFFFF !important;
+    border: none;
+}
+
+.quick-action-btn.btn-warning {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    color: #FFFFFF !important;
+    border: none;
+}
+
+.quick-action-btn.btn-success {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: #FFFFFF !important;
+    border: none;
+}
+
+.quick-action-btn.btn-info {
+    background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+    color: #FFFFFF !important;
+    border: none;
+}
+
+/* ==================== LIST "UJIAN TERBARU" ==================== */
+
+.recent-ujian-item {
+    padding: 14px 18px;
+    border-bottom: 1px solid #F3F4F6;
+    transition: all 0.2s ease;
+}
+
+.recent-ujian-item:hover {
+    background: #F9FAFB;
+}
+
+.recent-ujian-item:last-child {
+    border-bottom: none;
+}
+
+.recent-ujian-item h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+/* Badge peran (Promotor/Co-Promotor/Penguji) di list */
+.badge-peran {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 16px;
+}
+
+.badge-peran.bg-primary {
+    background: #DBEAFE !important;
+    color: #1E40AF !important;
+}
+
+.badge-peran.bg-success {
+    background: #D1FAE5 !important;
+    color: #059669 !important;
+}
+
+.badge-peran.bg-warning {
+    background: #FEF3C7 !important;
+    color: #D97706 !important;
+}
+
+/* List-group di dalam card ujian terbaru */
+.list-group-flush .list-group-item {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    padding: 14px 18px;
+}
+
+.list-group-flush .list-group-item:first-child {
+    border-top: none;
+}
+
+.list-group-flush .list-group-item:last-child {
+    border-bottom: none;
+}
+
+/* ==================== CARD INFO TAMBAHAN (bg-light) ==================== */
+/* Dipakai di card samping yang ada jumlah total / info singkat */
+
+.card.bg-light {
+    background: #FFFFFF !important;
+    border: 0.308621px solid var(--border-color);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.card.bg-light .card-body {
+    padding: 24px;
+}
+
+.card.bg-light h5 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #111827;
+    margin-bottom: 12px;
+}
+
+.card.bg-light p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #374151;
+}
+
+.card.bg-light strong {
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--primary-color);
+}
+
+/* ==================== RESPONSIVE KHUSUS KOMPONEN PENGUJI ==================== */
+
+@media (max-width: 768px) {
+    /* Biar tombol quick action agak lebih kecil di HP */
+    .quick-action-btn {
+        padding: 15px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Perkecil angka stat di layar kecil */
+    .stat-number {
+        font-size: 28px;
+        line-height: 42px;
+    }
+}
